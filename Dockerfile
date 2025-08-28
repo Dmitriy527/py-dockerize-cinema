@@ -5,8 +5,8 @@ WORKDIR app/
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-RUN mkdir -p /files/static
+RUN mkdir -p /files/static && mkdir -p /files/media
 RUN adduser --disabled-password --no-create-home my_user
-RUN chown -R my_user:my_user /files/static
-RUN chmod -R 755 /files/static
+RUN chown -R my_user:my_user /files/media && chown -R my_user:my_user /files/media
+RUN chmod -R 755 /files/media && chmod -R 755 /files/static
 USER my_user
